@@ -5,11 +5,12 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "ethereum-txn-status": "file:..",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts": "^1.1.4",
-    "ethereum-txn-status": "file:.."
+    "web3": "^1.2.6"
   },
   "scripts": {
     "start": "react-scripts start",

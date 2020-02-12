@@ -1,7 +1,7 @@
 {
   "name": "ethereum-txn-status",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "A React component to track Ethereum transactions in real-time with progress bar",
   "author": "pRoy24",
   "license": "MIT",
   "repository": "pRoy24/ethereum-txn-status",
@@ -57,5 +57,15 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {
+    "@dfuse/client": "^0.3.8",
+    "babel-polyfill": "^6.26.0",
+    "crypto": "^1.0.1",
+    "fs": "0.0.1-security",
+    "os": "^0.1.1",
+    "path": "^0.12.7",
+    "tty": "^1.0.1",
+    "util": "^0.12.1"
+  }
 }
