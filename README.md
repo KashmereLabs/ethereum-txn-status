@@ -26,6 +26,25 @@ class Example extends Component {
 }
 ```
 
+## Props
+```
+transaction_hash (Required) : The hash of the transaction that you want to track.
+```
+If you want to track the hash of a recently made transaction, use the hash provided in the web3 sendTransaction callback.(See example for more details)
+
+```
+dfuse_api_key (Required):The API key to query the Ethereum blockchain with. 
+```
+A free API key can be obtained (here)[https://app.dfuse.io/keys]
+
+```
+Network (Optional): mainnet or ropsten
+```
+The default is mainnet, 
+
+
+
+
 ## License
 
 MIT © [pRoy24](https://github.com/pRoy24)
