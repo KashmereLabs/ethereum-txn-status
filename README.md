@@ -26,6 +26,8 @@ class Example extends Component {
 }
 ```
 
+![alt text](https://github.com/KashmereLabs/ethereum-txn-status/blob/master/screenshot/tx_pending.png "Pending Transaction")
+
 ## Props
 ```
 transaction_hash (Required) : The hash of the transaction that you want to track.
@@ -35,7 +37,7 @@ If you want to track the hash of a recently made transaction, use the hash provi
 ```
 dfuse_api_key (Required):The API key to query the Ethereum blockchain with. 
 ```
-A free API key can be obtained (here)[https://app.dfuse.io/keys]
+A free API key can be obtained [here](https://app.dfuse.io/keys)
 
 ```
 Network (Optional): mainnet or ropsten
