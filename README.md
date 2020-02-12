@@ -15,12 +15,12 @@ npm install --save ethereum-txn-status
 ```jsx
 import React, { Component } from 'react'
 
-import MyComponent from 'ethereum-txn-status'
+import TransactionStatus from 'ethereum-txn-status'
 
 class Example extends Component {
   render () {
     return (
-      <MyComponent />
+      <TransactionStatus transaction_hash={tx_hash} dfuse_api_key={dfuse_key} network={"ropsten"}/>
     )
   }
 }
