@@ -1,4 +1,4 @@
-# ethereum-txn-status
+# Ethereum-txn-status
 
 > 
 
