@@ -103,10 +103,13 @@ export default class App extends Component {
     }
 
     return (
-      <div>
+      <div styles={{'width': '80%', 'marginLeft': '10%'}}>
         {pendingTransactionStatus}
         <div>
-          <button onClick={this.createPayment}>Donate to kitty</button>
+          <div style={{'marginTop':'20px','marginBottom': '20px'}}>
+          <button onClick={this.createPayment} style={{'width':'120px', 'height': '40px'}}>Donate to kitty</button>
+            Help buy litterbox and cat food for kitty.
+          </div>
           <img src="https://icatcare.org/app/uploads/2018/06/Layer-1704-1920x840.jpg" style={{"width": "100%"}}/>
         </div>
       </div>

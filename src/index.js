@@ -74,8 +74,13 @@ export default class TransactionStatus extends Component {
       ETHQ_ENDPOINT = "https://ropsten.ethq.app";
       DFUSE_NETWORK = "ropsten.eth.dfuse.io";
     }
-    
+
     let styles = {
+      outerContainer: {
+
+        'marginTop': '10px',
+        'marginBottom': '10px',
+      },
       containerStyle: {
         'background': '#f5f5f5',
         'marginTop': '20px',
@@ -87,13 +92,13 @@ export default class TransactionStatus extends Component {
       },
       hideContainerCheck: {
         'position': 'absolute',
-        'top': '0px',
+        'top': '-2px',
         'right': '4px',
         'fontSize': '20px',
         'fontWeight': '800',
       },
       stepperBodyContainer: {
-
+        'padding': '10px 12px'
       },
       statusStep: {
         'width': '68%',
@@ -101,12 +106,14 @@ export default class TransactionStatus extends Component {
       },
       statusLine: {
         'width': '30%',
-        'display': 'inline-block'
+        'display': 'inline-block',
+        'verticalAlign': 'top',
       },
       currentStatusStepper: {
         'width': '100%',
         'display': 'block',
         'position': 'relative',
+        'marginTop': '10px'
       },
       cellContainer: {
         'display': 'inline-block',
@@ -152,6 +159,13 @@ export default class TransactionStatus extends Component {
       cellData: {
         'fontWeight': '500',
         'fontSize': '16px',
+      },
+      stepHeaderLabel: {
+        'padding': '6px 10px',
+      },
+      stepLabel: {
+        'marginLeft': '-4px',
+        'marginTop': '6px'
       }
 
 
@@ -230,22 +244,20 @@ export default class TransactionStatus extends Component {
         if (idx < steps.length - 1) {
           joiner =  <div className="stepper-line" style={styles.stepperLine}></div>
         }
+        let itemLabel = (item.label[0] + item.label.substr(1, item.label.length - 1).toLowerCase()).replace("_", " ");
         return (
           <span key={`tx-step-${idx}`}>
               <div className="stepper-circle-container" key={"tx-confirmation-"+idx} style={styles.stepperCircleContainer}>
                 <div className="stepper-circle stepper-left" style={styles.stepperCircle}>
                   {stepperStep}
                 </div>
-                {item.label}
+                <span style={styles.stepLabel}>{itemLabel}</span>
               </div>
               {joiner}
           </span>
         )
         })}
         </div>
-
-
-
     )
     return (
       <div style={styles.outerContainer}>
@@ -254,12 +266,12 @@ export default class TransactionStatus extends Component {
       <div style={styles.containerStyle}>
           
           <div style={styles.stepHeaderContainer}>
-            <div>
+            <div style={styles.stepHeaderLabel}>
               New Transaction received
             </div>
             <div onClick={this.hideOuterContainer} style={styles.hideContainerCheck}>&#xd7;</div>
           </div>
-          <div  style={styles.stepperBodyContainer}>
+          <div style={styles.stepperBodyContainer}>
           <div className="status-cell-meta" style={styles.statusCellMeta}>
             <div className="cell-container" style={styles.cellContainer}>
               <div className="cell-data" style={styles.cellData}>
