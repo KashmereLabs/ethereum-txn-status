@@ -80,6 +80,7 @@ export default class TransactionStatus extends Component {
 
         'marginTop': '10px',
         'marginBottom': '10px',
+
       },
       containerStyle: {
         'background': '#f5f5f5',
@@ -184,6 +185,16 @@ export default class TransactionStatus extends Component {
         'marginLeft': '-12px',
         'marginTop': '6px'
       },
+    }
+
+    if (body_background) {
+      styles.containerStyle.background = body_background;
+    }
+    if (banner_background) {
+      styles.stepHeaderContainer.background = banner_background;
+    }
+    if (text_color) {
+      styles.outerContainer.color = text_color;
     }
 
 

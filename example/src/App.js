@@ -90,18 +90,14 @@ export default class App extends Component {
     const { pendingTransactions } = this.state;
 
     let pendingTransactionStatus = <span/>;
-    const styles = {
-      'containerStyle': {
-        'background': '#fff'
-      }
-    }
+
     if (pendingTransactions.length > 0) {
 
       pendingTransactionStatus =
         pendingTransactions.map(function(tx_hash, idx) {
           return (
             <TransactionStatus transaction_hash={tx_hash} key={tx_hash+"-"+idx}
-      dfuse_api_key={DFUSE_API_KEY} network={"ropsten"} custom_styles={styles}/>
+      dfuse_api_key={DFUSE_API_KEY} network={"ropsten"} body_background={"#1455D9"}/>
           )
         })
     }
