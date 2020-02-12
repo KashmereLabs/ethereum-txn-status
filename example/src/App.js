@@ -24,7 +24,6 @@ export default class App extends Component {
 
     window.addEventListener('load', async() => {
       if (window.ethereum) {
-        console.log("enable");
         window.web3 = new Web3(window.ethereum);
         try {
           await window.ethereum.enable();
@@ -91,13 +90,18 @@ export default class App extends Component {
     const { pendingTransactions } = this.state;
 
     let pendingTransactionStatus = <span/>;
+    const styles = {
+      'containerStyle': {
+        'background': '#fff'
+      }
+    }
     if (pendingTransactions.length > 0) {
 
       pendingTransactionStatus =
         pendingTransactions.map(function(tx_hash, idx) {
           return (
             <TransactionStatus transaction_hash={tx_hash} key={tx_hash+"-"+idx}
-      dfuse_api_key={DFUSE_API_KEY} network={"ropsten"}/>
+      dfuse_api_key={DFUSE_API_KEY} network={"ropsten"} custom_styles={styles}/>
           )
         })
     }
@@ -108,7 +112,7 @@ export default class App extends Component {
         <div>
           <div style={{'marginTop':'20px','marginBottom': '20px'}}>
           <button onClick={this.createPayment} style={{'width':'120px', 'height': '40px'}}>Donate to kitty</button>
-            Help buy litterbox and cat food for kitty.
+            &nbsp;Help buy litterbox and cat food for kitty.
           </div>
           <img src="https://icatcare.org/app/uploads/2018/06/Layer-1704-1920x840.jpg" style={{"width": "100%"}}/>
         </div>

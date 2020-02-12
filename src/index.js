@@ -65,7 +65,7 @@ export default class TransactionStatus extends Component {
 
   render() {
     const { transactionSteps } = this.state;
-    const { transaction_hash, dfuse_api_key, network } = this.props;
+    const { network, body_background, banner_background, text_color } = this.props;
 
     let ETHQ_ENDPOINT = "https://ethq.app";
     let DFUSE_NETWORK = "mainnet.eth.dfuse.io";
@@ -131,18 +131,35 @@ export default class TransactionStatus extends Component {
         'borderRadius': '4px',
         'height': '6px',
         'marginBottom': '28px',
-        'marginLeft': '-35px',
-        'marginRight': '10px'
+        'marginLeft': '-18px',
+        'marginRight': '8px'
       },
       stepperCircle: {
         'width': '30px',
         'height': '30px',
         'borderRadius': '50%',
-        'background': 'yellow',
+        'background': '#ffc107',
         'fontSize': '18px',
         'fontWeight': '600',
-
       },
+
+      stepperSuccessCircle: {
+        'width': '30px',
+        'height': '30px',
+        'borderRadius': '50%',
+        'background': '#28a745',
+        'fontSize': '18px',
+        'fontWeight': '600',
+      },
+      stepperFailureCircle: {
+        'width': '30px',
+        'height': '30px',
+        'borderRadius': '50%',
+        'background': '#dc3545',
+        'fontSize': '18px',
+        'fontWeight': '600',
+      },
+
       progressBarContainer: {
         'position': 'relative',
         'paddingBottom': '20px',
@@ -164,12 +181,12 @@ export default class TransactionStatus extends Component {
         'padding': '6px 10px',
       },
       stepLabel: {
-        'marginLeft': '-4px',
+        'marginLeft': '-12px',
         'marginTop': '6px'
-      }
-
-
+      },
     }
+
+
     let transactionFromAddress = "";
     let transactionToAddress = "";
     let transactionEtherValue = <span/>;
@@ -204,10 +221,10 @@ export default class TransactionStatus extends Component {
         transactionEtherValue = firstStep.transition.transaction.value;
 
         transactionFromDisplay = transactionFromAddress.substr(0, 5) + "...." + transactionFromAddress.substr(transactionFromAddress.length - 6, transactionFromAddress.length - 1);
-        transactionFromDisplay = <a href={`${ETHQ_ENDPOINT}/tx/${transactionFromAddress}`} target="_blank">{transactionFromDisplay}</a>;
+        transactionFromDisplay = <a href={`${ETHQ_ENDPOINT}/search?q=(from:${transactionFromAddress}%20OR%20to:${transactionFromAddress})`} target="_blank">{transactionFromDisplay}</a>;
 
         transactionToDisplay = transactionToAddress.substr(0, 5) + "...." + transactionToAddress.substr(transactionToAddress.length - 6, transactionToAddress.length - 1);
-        transactionToDisplay = <a href={`${ETHQ_ENDPOINT}/tx/${transactionToAddress}`} target="_blank">{transactionToDisplay}</a>;
+        transactionToDisplay = <a href={`${ETHQ_ENDPOINT}/search?q=(from:${transactionToAddress}%20OR%20to:${transactionToAddress})`} target="_blank">{transactionToDisplay}</a>;
 
       }
     }
@@ -245,10 +262,17 @@ export default class TransactionStatus extends Component {
           joiner =  <div className="stepper-line" style={styles.stepperLine}></div>
         }
         let itemLabel = (item.label[0] + item.label.substr(1, item.label.length - 1).toLowerCase()).replace("_", " ");
+        let circleStyle = styles.stepperCircle;
+        if (item.label === 'IN_BLOCK') {
+          circleStyle = styles.stepperSuccessCircle;
+        }
+        if (item.label === 'FAILED') {
+          circleStyle = styles.stepperFailureCircle;
+        }
         return (
           <span key={`tx-step-${idx}`}>
               <div className="stepper-circle-container" key={"tx-confirmation-"+idx} style={styles.stepperCircleContainer}>
-                <div className="stepper-circle stepper-left" style={styles.stepperCircle}>
+                <div className="stepper-circle stepper-left" style={circleStyle}>
                   {stepperStep}
                 </div>
                 <span style={styles.stepLabel}>{itemLabel}</span>
@@ -267,7 +291,7 @@ export default class TransactionStatus extends Component {
           
           <div style={styles.stepHeaderContainer}>
             <div style={styles.stepHeaderLabel}>
-              New Transaction received
+              New transaction created.
             </div>
             <div onClick={this.hideOuterContainer} style={styles.hideContainerCheck}>&#xd7;</div>
           </div>
