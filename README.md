@@ -39,10 +39,18 @@ dfuse_api_key (Required):The API key to query the Ethereum blockchain with.
 ```
 A free API key can be obtained [here](https://app.dfuse.io/keys)
 
+### Optional Props
+
 ```
 Network (Optional): mainnet or ropsten
 ```
-The default is mainnet, 
+The default is mainnet.
+```
+body_background:  Hex code to modify the background color of body
+banner_background: Hex code to modify the background color of header section
+text_color: Hex code to modify the text color
+```
+
 
 
 
